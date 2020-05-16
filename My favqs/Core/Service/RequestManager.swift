@@ -54,4 +54,11 @@ class RequestManager {
                            completion: completion)
     }
     
+    func getLikedQuotes(username: String, completion:@escaping(AFResult<Quotes>) -> Void) {
+        let safeUrl = "\(APIPath.quotes)?filter=\(username)&type=user"
+        
+        _ = performRequest(safeUrl,
+                           completion: completion)
+    }
+    
 }
