@@ -29,8 +29,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     let homeViewController = R.storyboard.main.homeViewController()
                     homeViewController?.modalPresentationStyle = .fullScreen
                     self.show(homeViewController!, sender: self)
-                case .failure(let error):
-                    print(error)
+                case .failure(_):
+                    return
                 }
             }
         }
@@ -62,13 +62,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         let homeViewController = R.storyboard.main.homeViewController()
                         homeViewController?.modalPresentationStyle = .fullScreen
                         self.show(homeViewController!, sender: self)
-                    case .failure(let error):
-                        print(error)
+                    case .failure(_):
+                        return
                     }
                 }
                 
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                return
             }
         }
         
