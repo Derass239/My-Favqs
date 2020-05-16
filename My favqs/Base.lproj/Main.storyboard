@@ -134,13 +134,25 @@
                                     <constraint firstAttribute="height" constant="1" id="gp7-dW-RIx"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v7F-Y7-q0M">
+                                <rect key="frame" x="0.0" y="111.33333333333331" width="414" height="624.66666666666674"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Swb-aP-fHN" id="ouS-fr-HoH"/>
+                                    <outlet property="delegate" destination="Swb-aP-fHN" id="XcU-Br-TSZ"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Jvb-NN-BO0" firstAttribute="leading" secondItem="wZE-Jn-ilK" secondAttribute="leading" id="1ql-DD-4f1"/>
+                            <constraint firstItem="wZE-Jn-ilK" firstAttribute="trailing" secondItem="v7F-Y7-q0M" secondAttribute="trailing" id="5Cl-aP-81s"/>
+                            <constraint firstItem="wZE-Jn-ilK" firstAttribute="bottom" secondItem="v7F-Y7-q0M" secondAttribute="bottom" id="C2h-QN-zEg"/>
                             <constraint firstItem="wZE-Jn-ilK" firstAttribute="trailing" secondItem="Jvb-NN-BO0" secondAttribute="trailing" id="RvK-4W-kpX"/>
+                            <constraint firstItem="v7F-Y7-q0M" firstAttribute="top" secondItem="Jvb-NN-BO0" secondAttribute="bottom" id="YJr-l8-9yH"/>
                             <constraint firstItem="wZE-Jn-ilK" firstAttribute="trailing" secondItem="CFM-0P-SkM" secondAttribute="trailing" id="Z92-Mb-71c"/>
                             <constraint firstItem="CFM-0P-SkM" firstAttribute="height" secondItem="Sey-BC-I1P" secondAttribute="height" multiplier="0.15" id="ez2-3b-VD2"/>
+                            <constraint firstItem="v7F-Y7-q0M" firstAttribute="leading" secondItem="wZE-Jn-ilK" secondAttribute="leading" id="rhS-Eg-6IK"/>
                             <constraint firstItem="Jvb-NN-BO0" firstAttribute="top" secondItem="CFM-0P-SkM" secondAttribute="bottom" id="uqJ-Cb-X5N"/>
                             <constraint firstItem="CFM-0P-SkM" firstAttribute="top" secondItem="wZE-Jn-ilK" secondAttribute="top" id="xfk-0Z-wWo"/>
                             <constraint firstItem="CFM-0P-SkM" firstAttribute="leading" secondItem="wZE-Jn-ilK" secondAttribute="leading" id="z4M-CZ-ewo"/>
@@ -151,6 +163,7 @@
                     <connections>
                         <outlet property="favQuoteLabel" destination="i4y-gw-WXI" id="O9L-lg-nrM"/>
                         <outlet property="profilePicImageView" destination="vuC-4E-ueQ" id="3Sj-sI-trw"/>
+                        <outlet property="quoteTableView" destination="v7F-Y7-q0M" id="28n-cc-agI"/>
                         <outlet property="usernameLabel" destination="OUz-Qt-uX3" id="avN-dQ-aiI"/>
                     </connections>
                 </viewController>
