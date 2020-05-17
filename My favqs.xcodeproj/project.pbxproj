@@ -24,6 +24,7 @@
 		A78E277124702DAC00DB7C37 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E277024702DAC00DB7C37 /* R.generated.swift */; };
 		A78E277424704DAC00DB7C37 /* QuoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A78E277324704DAC00DB7C37 /* QuoteTableViewCell.xib */; };
 		A78E277624704E0300DB7C37 /* QuoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E277524704E0300DB7C37 /* QuoteTableViewCell.swift */; };
+		A78E27782470989800DB7C37 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78E27772470989800DB7C37 /* NetworkManager.swift */; };
 		F25D873EE92D87BADDA98C2D /* Pods_My_favqs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CFA94F8C4AEA922783A6640 /* Pods_My_favqs.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		A78E277024702DAC00DB7C37 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		A78E277324704DAC00DB7C37 /* QuoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = QuoteTableViewCell.xib; path = "My favqs/Core/Generated/QuoteTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
 		A78E277524704E0300DB7C37 /* QuoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuoteTableViewCell.swift; path = "My favqs/Core/Generated/QuoteTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		A78E27772470989800DB7C37 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A75F7AEC24717E130075556D /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				A78C2F31246E9AB5006B64E8 /* Info.plist */,
+				A78C2F2C246E9AB5006B64E8 /* Assets.xcassets */,
+			);
+			path = Asset;
+			sourceTree = "<group>";
+		};
 		A779CD60246EA3BA00DB6095 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,8 +97,8 @@
 		A779CD64246EA3F200DB6095 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				A779CD68246EC36900DB6095 /* Manager */,
 				A779CD76246F46BF00DB6095 /* Helper */,
-				A779CD68246EC36900DB6095 /* Service */,
 				A779CD65246EA3F600DB6095 /* Generated */,
 				A779CD6B246ECF9300DB6095 /* Constant.swift */,
 			);
@@ -102,12 +113,13 @@
 			path = Generated;
 			sourceTree = "<group>";
 		};
-		A779CD68246EC36900DB6095 /* Service */ = {
+		A779CD68246EC36900DB6095 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
 				A779CD69246EC37F00DB6095 /* RequestManager.swift */,
+				A78E27772470989800DB7C37 /* NetworkManager.swift */,
 			);
-			path = Service;
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		A779CD76246F46BF00DB6095 /* Helper */ = {
@@ -141,15 +153,14 @@
 		A78C2F22246E9AB3006B64E8 /* My favqs */ = {
 			isa = PBXGroup;
 			children = (
+				A75F7AEC24717E130075556D /* Asset */,
 				A779CD64246EA3F200DB6095 /* Core */,
 				A779CD62246EA3D500DB6095 /* View */,
 				A779CD60246EA3BA00DB6095 /* Model */,
 				A78C2F23246E9AB3006B64E8 /* AppDelegate.swift */,
 				A78C2F25246E9AB3006B64E8 /* SceneDelegate.swift */,
 				A78C2F29246E9AB3006B64E8 /* Main.storyboard */,
-				A78C2F2C246E9AB5006B64E8 /* Assets.xcassets */,
 				A78C2F2E246E9AB5006B64E8 /* LaunchScreen.storyboard */,
-				A78C2F31246E9AB5006B64E8 /* Info.plist */,
 			);
 			path = "My favqs";
 			sourceTree = "<group>";
@@ -327,6 +338,7 @@
 				A78C2F24246E9AB3006B64E8 /* AppDelegate.swift in Sources */,
 				A78E276F24702BBC00DB7C37 /* UIViewController+Spinner.swift in Sources */,
 				A78E276D2470252D00DB7C37 /* UIIImage+Rounded.swift in Sources */,
+				A78E27782470989800DB7C37 /* NetworkManager.swift in Sources */,
 				A78C2F26246E9AB3006B64E8 /* SceneDelegate.swift in Sources */,
 				A779CD6C246ECF9300DB6095 /* Constant.swift in Sources */,
 				A78E277124702DAC00DB7C37 /* R.generated.swift in Sources */,
@@ -476,7 +488,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FT3D266XN7;
-				INFOPLIST_FILE = "My favqs/Info.plist";
+				INFOPLIST_FILE = "My favqs/Asset/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -484,7 +496,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.valentinLimagne.My-favqs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -495,7 +507,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FT3D266XN7;
-				INFOPLIST_FILE = "My favqs/Info.plist";
+				INFOPLIST_FILE = "My favqs/Asset/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -503,7 +515,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.valentinLimagne.My-favqs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
