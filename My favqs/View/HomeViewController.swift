@@ -40,8 +40,15 @@ class HomeViewController: UIViewController {
         favQuoteLabel.text = "I like \(safeFavCount) quote(s)"
         profilePicImageView.af.setImage(withURL: URL(string: safePicURL)!)
         
-        getQuotes(username: safeUsername, completion: {
-        })
+        if NetworkManager.isConnected() {
+            getQuotes(username: safeUsername, completion: {
+                
+            })
+        } else {
+            quotes = UserDefaultsHelper.getQuotes()?.quotes as! [Quote]
+            quoteTableView.reloadData()
+        }
+        
     }
     
     func getQuotes(username: String, completion: (() -> ()?)) {
@@ -49,6 +56,7 @@ class HomeViewController: UIViewController {
             switch result {
             case .success(let quotesResult):
                 self.quotes = quotesResult.quotes
+                UserDefaultsHelper.set(quotes: quotesResult)
                 self.quoteTableView.reloadData()
             case .failure(_):
                 return

@@ -19,23 +19,32 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         loginTextField.delegate = self
         passwordTextField.delegate = self
-        
-        if let token = UserDefaultsHelper.getToken(), let login = UserDefaultsHelper.getLogin() {
-            RequestManager.sharedInstance.headers["User-Token"] = token
-            RequestManager.sharedInstance.whoAmI(username: login) { result in
-                switch result {
-                case .success(let user):
-                    User.currentUser = user
-                    let homeViewController = R.storyboard.main.homeViewController()
-                    homeViewController?.modalPresentationStyle = .fullScreen
-                    self.show(homeViewController!, sender: self)
-                case .failure(_):
-                    return
-                }
-            }
-        }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let token = UserDefaultsHelper.getToken(), let login = UserDefaultsHelper.getLogin() {
+            if NetworkManager.isConnected() {
+                RequestManager.sharedInstance.headers["User-Token"] = token
+                RequestManager.sharedInstance.whoAmI(username: login) { result in
+                    switch result {
+                    case .success(let user):
+                        User.currentUser = user
+                        UserDefaultsHelper.set(user: user)
+                        self.goToHome()
+                    case .failure(_):
+                        return
+                    }
+                }
+            } else {
+                let user = UserDefaultsHelper.getUser()
+                User.currentUser = user
+                goToHome()
+            }
+        }
+        
+    }
     
     @IBAction func loginButtonAction(_ sender: Any) {
         
@@ -43,7 +52,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        _ = UIViewController.displaySpinner(onView: self.view)
         RequestManager.sharedInstance.login(username: username, password: password) { result in
             switch result {
             case .success(let user):
@@ -59,9 +67,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     switch result {
                     case .success(let user):
                         User.currentUser = user
-                        let homeViewController = R.storyboard.main.homeViewController()
-                        homeViewController?.modalPresentationStyle = .fullScreen
-                        self.show(homeViewController!, sender: self)
+                        self.goToHome()
                     case .failure(_):
                         return
                     }
@@ -71,7 +77,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 return
             }
         }
-        
+    }
+    
+    func goToHome() {
+        let homeViewController = R.storyboard.main.homeViewController()
+        homeViewController?.modalPresentationStyle = .fullScreen
+        self.show(homeViewController!, sender: self)
+        //self.present(homeViewController!, animated: true, completion: nil)
     }
     
     // MARK: UITextFieldDelegate
