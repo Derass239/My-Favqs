@@ -1,5 +1,7 @@
 # MyFavqs
 
+### This project is a technical test
+
 Built using XCode 11.4.1 (Swift 5)
 
 ### How to run the project ?
